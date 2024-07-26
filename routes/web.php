@@ -2,26 +2,25 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::prefix('/admin/users')->name('admin.')->group(function () {
-    Route::get('/management', function () {
-        return '<h1 style="color: red">Hello World</h1>';
-    })->name('users.management');
-
-    Route::get('/reports', function () {
-        return '<h1 style="color: red">Hello World</h1>';
-    })->name('users.reports');
+Route::get('/', function () {
+    return view('welcome');
+    
 });
 
-// Route::get('/admin/users/management', function () {
-//     return '<h1 style="color: red">Hello World</h1>';
-// })->name('admin.users.management');
+Route::prefix('user')->name('user.')->group(function () {
+    Route::get('/profile', function () {
+        return '<h2>Name: </h2>
+                <h2>Address: </h2>
+                <h2>Email: </h2>' 
+                ; 
+    })->name('profile');
 
-// Route::get('/admin/users/reports', function () {
-//     return '<h1 style="color: red">Hello World</h1>';
-// })->name('admin.users.reports');
+    Route::get('/work-experience', function () {
+        return '<h2>Company: </h2>
+                <h2> Position:</h2>'
+                ;
+    })->name('work-experience');
 
-Route::view('/', 'welcome');
+    Route::redirect('/', '/user/profile');
 
-Route::get('/home', function () {
-    return to_route('admin.users.management');
 });
