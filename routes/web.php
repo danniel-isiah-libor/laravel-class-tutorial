@@ -2,26 +2,37 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::prefix('/admin/users')->name('admin.')->group(function () {
-    Route::get('/management', function () {
-        return '<h1 style="color: red">Hello World</h1>';
-    })->name('users.management');
+// installed routing method
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-    Route::get('/reports', function () {
-        return '<h1 style="color: red">Hello World</h1>';
-    })->name('users.reports');
-});
 
-// Route::get('/admin/users/management', function () {
-//     return '<h1 style="color: red">Hello World</h1>';
-// })->name('admin.users.management');
+// alternative to regular routing
+Route::view ('/', 'welcome')->name('welcome');
 
-// Route::get('/admin/users/reports', function () {
-//     return '<h1 style="color: red">Hello World</h1>';
-// })->name('admin.users.reports');
 
-Route::view('/', 'welcome');
+// Route::prefix('/user')->group(function(){
+//     Route::get('/profile', function(){
+//         return 'Name: <br>Address: <br>Email: <br>';
+//     });
+//     Route::get('/work-experience', function(){
+//         return 'Company: <br>Position: <br>';
+//     });
+// });
 
-Route::get('/home', function () {
-    return to_route('admin.users.management');
+
+
+Route::prefix('/user')->name('user.')->group(function () {
+    Route::get('/profile', function () {
+        return '<h1>Name: John Niero Medina<br>Address: San Mateo, Rizal<br>Email: niero@gmail.com<br></h1>';
+    })->name('profile');
+
+    Route::get('/work-experience', function () {
+        return '<h1>Company: LWUA<br>Position: Corporate Planning Chief<br></h1>';
+    })->name('work-experience');
+
+    Route::redirect('/', 'user/profile')->name('home');
+    //Route::get("/", function () => to_route('user.profile'))->name('home');
+
 });
