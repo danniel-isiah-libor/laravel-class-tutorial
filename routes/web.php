@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\UserController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -8,12 +10,7 @@ Route::get('/', function () {
 });
 
 Route::prefix('user')->name('user.')->group(function () {
-    Route::get('/profile', function () {
-        return '<h2>Name: </h2>
-                <h2>Address: </h2>
-                <h2>Email: </h2>' 
-                ; 
-    })->name('profile');
+    Route::get('/profile', [UserController::class, 'profile'])->name('profile');
 
     Route::get('/work-experience', function () {
         return '<h2>Company: </h2>
@@ -24,3 +21,16 @@ Route::prefix('user')->name('user.')->group(function () {
     Route::redirect('/', '/user/profile');
 
 });
+
+Route::get('/posts/{id}', function ($id) {
+    return "Post ID: $id";
+})->name('posts.show');
+
+Route::get('/profile/{name?}', function (?string $name = 'no name found') {
+    return "User name: $name";
+});
+
+Route::get('/request', function (Request $request) {
+    dd($request->query(''));
+});
+
