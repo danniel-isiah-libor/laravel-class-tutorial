@@ -58,3 +58,5 @@ Route::post('/register', [UserController::class, 'store'])->name('user.store');
 
 Route::get('/login', [UserController::class, 'login'])->name('user.login');
 Route::post('/login', [UserController::class, 'authenticate'])->name('user.authenticate');
+
+xxxx
