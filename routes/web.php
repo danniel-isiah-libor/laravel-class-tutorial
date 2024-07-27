@@ -1,8 +1,8 @@
 <?php
 use Illuminate\Http\Request;
+use App\Http\Controllers\Pyramid;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-
 Route::prefix('/users')->name('user.')->group(function () {
     Route::get('/profile', [UserController::class, 'profile'])->name('profile');
     Route::get('/work-exp', [UserController::class, 'workExp'])->name('work-exp');
@@ -35,3 +35,5 @@ Route::view('/', 'welcome');
 Route::get('/request', function (Request $request) {
     dd($request->query('name'));
 }); */
+
+Route::get('/pyramid', [Pyramid::class, 'index'])->name('index');
