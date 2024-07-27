@@ -9,7 +9,14 @@ class Profile extends Model
 {
     use HasFactory;
 
-    const name = "Aimee";
-    const address = "Ph";
-    const email = "estabayaaimee@gmail.com";
+    const name = 'Danniel Libor';
+    const address = 'Philippines';
+    const email = 'dan@mail.test';
+
+    public function getData()
+    {
+        return [
+            'name' => fake()->name()
+        ];
+    }
 }
