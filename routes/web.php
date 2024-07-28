@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\WorkExperienceController;
+
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PyramidController;
 use Illuminate\Http\Request;
@@ -32,7 +34,7 @@ Route::get('/home', function () {
 Route::prefix('/user')->name('user.')->group(function () {
     Route::get('/profile', [UserController::class, 'profile'])->name('profile');
 
-    Route::get('/work-experience', [UserController::class, 'workExperience'])->name('work-experience');
+  //  Route::get('/work-experience', [UserController::class, 'workExperience'])->name('work-experience');
 
     // Route::redirect('/', '/user/profile')->name('home');
     Route::get('/', fn () => to_route('user.profile'))->name('home');
@@ -58,3 +60,7 @@ Route::post('/register', [UserController::class, 'store'])->name('user.store');
 
 Route::get('/login', [UserController::class, 'login'])->name('user.login');
 Route::post('/login', [UserController::class, 'authenticate'])->name('user.authenticate');
+
+Route::get('/work-experience', [WorkExperienceController::class, 'create'])->name('work-experience.create');
+Route::post('/work-experience', [WorkExperienceController::class, 'store'])->name('work-experience.store');
+
