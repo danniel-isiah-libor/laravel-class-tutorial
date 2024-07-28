@@ -7,6 +7,8 @@
     <title>Document</title>
 </head>
 <body>
-    {{$slot}}
+    <div class="main-container">
+        {{$slot}}
+    </div>
 </body>
 </html>

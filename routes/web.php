@@ -15,6 +15,7 @@ Route::prefix('user')->name('user.')->group(function(){
     Route::get('/profile', [UserController::class, 'profile'])->name('profile');
 
     Route::get('/work-experience', [UserController::class, 'workExperience'])->name('work-experience');
+    Route::post('/work-experience', [UserController::class, 'storeExperience'])->name('store.work-experience');
 
     Route::redirect('/', '/user/profile')->name('home');
 

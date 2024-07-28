@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\RegistrationRequest;
+use App\Http\Requests\StoreWorkExperienceRequest;
 use App\Models\Profile;
 use App\Models\WorkExperience;
 use Illuminate\Http\Request;
@@ -29,10 +30,13 @@ class UserController extends Controller
      * @return string
      */
     public function workExperience(){
-        $company = WorkExperience::company;
-        $position = WorkExperience::position;
-        return "<h3>Company:</h3><h2>$company</h2>
-                <h3>position:</h3><h2>$position</h2>"; 
+        return view('work-experience');
+    }
+
+    public function storeExperience(StoreWorkExperienceRequest $request){
+        $data = $request->validated();
+        $user_id = $data['user_id'];
+        return back()->with('success', 'Work Experience for '. $user_id .' added successfully');
     }
 
     public function request(Request $request){
