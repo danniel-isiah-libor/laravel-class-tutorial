@@ -9,5 +9,10 @@ class WorkExperiencesModel extends Model
 {
     use HasFactory;
 
-    
+    protected $fillable =[
+        'user_id','company','from','to','position'
+    ];
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }

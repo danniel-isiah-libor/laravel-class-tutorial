@@ -64,3 +64,5 @@ Route::post('/login', [UserController::class, 'authenticate'])->name('user.authe
 Route::get('/work-experience', [WorkExperienceController::class, 'create'])->name('work-experience.create');
 Route::post('/work-experience', [WorkExperienceController::class, 'store'])->name('work-experience.store');
 
+Route::get('/work-experience/{model}/edit', [WorkExperienceController::class, 'edit'])->name('work-experience.edit');
+Route::put('/work-experience/{model}/update', [WorkExperienceController::class, 'update'])->name('work-experience.update');
